@@ -7,31 +7,33 @@ def f(x):
 res = quad(f,2,3)
 print("el valor matematico es ", res[0])
 
-
 def carlos():
     itertotal = 1
-    porcent=0
-    while itertotal <= 10000:
+    suma=0
+    i=int(input("numero de iteraciones"))
+    while itertotal <= i:
         x1 = round(random.uniform(2.00, 3.00), 2)
-        x2 = round(random.uniform(2.00, 3.00), 2)
-        if x1 != x2:
-            itertotal += 1
-            if x1>x2:
-                x1f=float(x2)
-                x2f=float(x1)
-            else:
-                x1f = float(x1)
-                x2f = float(x2)
-            print(x1f)
-            print(x2f)
-            monte = quad(f, x1f, x2f)
-            if porcent == 0:
-                porcent = ((abs(monte[0] - res[0]) / res[0]) * 100.0)
-            else:
-                suma = porcent + ((abs(monte[0] - res[0]) / res[0]) * 100.0)
-                porcent = suma/2
-            ##print("el valor maonte es ", monte[0])
-            print(porcent,"%")
+        itertotal += 1
+        ##print(x1)
+        monte = round(f(x1),2)
+        if suma == 0:
+            suma = monte
+        else:
+            suma += monte
 
+        ##print("el valor maonte es ", monte[0])
+    suma = suma/i
+
+    def dif(current, previous):
+        if current == previous:
+            print("la presicion final es: 100%")
+        try:
+            final= (current/previous[0])*100
+            print("la presicion final es: ",final, "%")
+        except ZeroDivisionError:
+            return 0
+
+    print("el valor montecarlos es ", suma)
+    dif(suma,res)
 
 carlos()
