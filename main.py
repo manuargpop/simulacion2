@@ -28,8 +28,13 @@ def carlos():
         if current == previous:
             print("la presicion final es: 100%")
         try:
-            final= (current/previous[0])*100
-            print("la presicion final es: ",final, "%")
+            final= round((current/previous[0])*100,2)
+            if final>100:
+                sup=(final-100)*2
+                final=final-sup
+                print("la presicion final es: ",final, "%")
+            else:
+                print("la presicion final es: ", final, "%")
         except ZeroDivisionError:
             return 0
 
